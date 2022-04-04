@@ -2,20 +2,22 @@ package kr.co.ch02.study;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 @Component
 public class Tv {
 	
 	@Autowired
 	private Speaker spk;
-	
+
 	@Autowired
 	private Remocon remocon;
 	
-	public Tv(Speaker spk) {
+	public Tv(Speaker spk, Remocon remocon) {
 		this.spk = spk;
+		this.remocon = remocon;
 	}
-	
+		
 	public void powerOn() {
 		remocon.powerOn();
 	}
@@ -34,5 +36,4 @@ public class Tv {
 	public void soundDown() {
 		spk.soundDown();
 	}
-
 }

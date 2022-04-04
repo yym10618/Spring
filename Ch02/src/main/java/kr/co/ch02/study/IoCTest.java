@@ -25,35 +25,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class IoCTest {
+	
 
 	@GetMapping("/test1")
 	public void test1() {
-		
 		System.out.println("----------- test1 -----------");
 		
 		// IoC/DI 적용하지 않을 경우
 		Speaker spk = new Speaker();
-		Tv tv = new Tv(spk);
+		Remocon remocon = new Remocon();
+		Tv tv = new Tv(spk, remocon);
 		
 		tv.powerOn();
 		tv.chUp();
 		tv.soundUp();
 		tv.powerOff();
-		
 	}
 	
-	@Autowired //inject
+	@Autowired
 	private Tv tv;
 	
 	@GetMapping("/test2")
 	public void test2() {
-		
 		System.out.println("----------- test2 -----------");
 		
-		// IoC/DI 적용할 경우
+		// IoC/DI 적용할 경우			
 		tv.powerOn();
 		tv.chUp();
 		tv.soundUp();
 		tv.powerOff();
+				
 	}
+	
 }
