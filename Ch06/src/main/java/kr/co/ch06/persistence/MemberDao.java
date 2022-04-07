@@ -9,9 +9,9 @@ import kr.co.ch06.vo.MemberVo;
 @Repository
 public interface MemberDao {
 
-	public void insertMember();
-	public void selectMember();
+	public void insertMember(MemberVo vo);
+	public MemberVo selectMember(String uid);
 	public List<MemberVo> selectMembers();
-	public void updateMember();
-	public void deleteMember();
+	public void updateMember(MemberVo vo);
+	public void deleteMember(String uid);
 }
