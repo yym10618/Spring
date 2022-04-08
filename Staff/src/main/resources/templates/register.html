@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>register</title>
+	</head>
+	<body>
+		<h3>register</h3>
+		<a th:href="@{/list}">목록보기</a>
+		<form th:action="@{/register}" method="post">
+			<table border="1">
+				<tr>
+					<td>직원번호</td>
+					<td><input type="text" name="stf_no"></td>
+				</tr>
+				<tr>
+					<td>직원이름</td>
+					<td><input type="text" name="stf_name"></td>
+				</tr>
+				<tr>
+					<td>직원생년월일</td>
+					<td><input type="text" name="stf_birth"></td>
+				</tr>
+				<tr>
+					<td>직원성별</td>
+					<td>
+						<label><input type = "radio" name = "stf_gender" value = "1"/>남</label>
+						<label><input type = "radio" name = "stf_gender" value = "2"/>여</label>
+					</td>
+				</tr>
+				<tr>
+					<td>직원휴대폰</td>
+					<td><input type="text" name="stf_hp"></td>
+				</tr>
+				<tr>
+					<td>직원주소</td>
+					<td><input type="text" name="stf_addr"></td>
+				</tr>
+				<tr>
+					<td>직원입사일</td>
+					<td><input type="text" name="stf_date"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><input type="submit" value="등록하기"></td>
+				</tr>
+			</table>
+		</form>
+	
+	</body>
+</html>
