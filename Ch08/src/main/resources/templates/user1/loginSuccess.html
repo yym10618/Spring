@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html 
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
->
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<meta charset="UTF-8">
-		<title>user/loginSuccess</title>
+		<title>user1/loginSuccess</title>
 	</head>
 	<body>
-		<h3>user/loginSuccess</h3>
+		<h3>user1/loginSuccess</h3>
 		<p>
-			[[${#authentication.name}]]님 반갑습니다.<br/>
-			<a th:href="@{/user/logout}">로그아웃</a>
+			<span sec:authentication="name">김길동</span>님 반갑습니다.<br/>
+			<a th:href="@{/user1/logout}">로그아웃</a>
 		</p>
 	</body>
 </html>
