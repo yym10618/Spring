@@ -1,17 +1,10 @@
 package kr.co.ch08.vo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "User2")
-public class User1Vo {
+public class User2Vo {
 
-	@Id
 	private String uid;
 	private String pass;
 	private String name;

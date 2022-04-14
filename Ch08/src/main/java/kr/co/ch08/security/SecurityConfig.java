@@ -8,25 +8,25 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import kr.co.ch08.service.UserService;
+import kr.co.ch08.service.User1Service;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
-	private UserService userService;
+	private User1Service userService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// 접근권한 설정
 		http.authorizeRequests().antMatchers("/").permitAll();
 		http.authorizeRequests().antMatchers("/guest/**").permitAll();
-		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers("/manager/**").hasRole("MANAGER");
+		http.authorizeRequests().antMatchers("/admin/**", "/manager/**", "/member/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/manager/**", "/member/**").hasRole("MANAGER");
 		http.authorizeRequests().antMatchers("/member/**").hasRole("MEMBER");
 		
 		// User2 테이블에 있는 사용자를 위한 기본 인증 설정(특별한 권한 X) (authenticated())
-		http.authorizeRequests().antMatchers("/user/loginSuccess").authenticated();
+		http.authorizeRequests().antMatchers("/user1/loginSuccess").authenticated();
 		
 		// 사이트 위조 요청에 대한 방지 설정
 		http.csrf().disable();
@@ -36,17 +36,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		// 로그인 폼 설정(사용자 정의 폼 사용)
 		http.formLogin()
-		.loginPage("/user/login")
-		.defaultSuccessUrl("/user/loginSuccess")
-		.failureUrl("/user/login?success=100")
+		.loginPage("/user1/login")
+		.defaultSuccessUrl("/user1/loginSuccess")
+		.failureUrl("/user1/login?success=100")
 		.usernameParameter("uid")
 		.passwordParameter("pass");
 		
 		// 로그아웃 설정(사용자 정의)
 		http.logout()
 		.invalidateHttpSession(true) // 세션해제
-		.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) // 로그아웃주소
-		.logoutSuccessUrl("/user/login"); // 로그아웃 후 이동페이지
+		.logoutRequestMatcher(new AntPathRequestMatcher("/user1/logout")) // 로그아웃주소
+		.logoutSuccessUrl("/user1/login"); // 로그아웃 후 이동페이지
 		
 		
 		
