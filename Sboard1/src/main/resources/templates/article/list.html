@@ -22,12 +22,12 @@
                         <th>날짜</th>
                         <th>조회</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><a th:href="@{/article/view}">테스트 제목입니다.</a>&nbsp;[3]</td>
-                        <td>길동이</td>
-                        <td>20-05-12</td>
-                        <td>12</td>
+                    <tr th:each="list:${lists}" >
+                        <td th:text="${list.no}">1</td>
+                        <td th:text="${list.title}"><a th:href="@{/article/view}">테스트 제목입니다.</a>&nbsp;[3]</td>
+                        <td th:text="${list.nick}">길동이</td>
+                        <td th:text="${list.rdate}">20-05-12</td>
+                        <td th:text="${list.hit}">12</td>
                     </tr>
                 </table>
             </article>
