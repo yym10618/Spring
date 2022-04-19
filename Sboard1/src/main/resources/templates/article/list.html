@@ -24,9 +24,11 @@
                     </tr>
                     <tr th:each="list:${lists}" >
                         <td th:text="${list.no}">1</td>
-                        <td th:text="${list.title}"><a th:href="@{/article/view}">테스트 제목입니다.</a>&nbsp;[3]</td>
+                        <td>
+                       		<a th:href="@{/article/view}">[[${list.title}]]&nbsp;[<span th:text="${list.comment}"></span>]</a>
+                        </td>
                         <td th:text="${list.nick}">길동이</td>
-                        <td th:text="${list.rdate}">20-05-12</td>
+                        <td th:text="${#strings.substring(list.rdate, 2, 10)}">20-05-12</td>
                         <td th:text="${list.hit}">12</td>
                     </tr>
                 </table>

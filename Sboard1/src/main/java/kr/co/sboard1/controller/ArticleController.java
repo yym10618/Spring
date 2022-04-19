@@ -31,7 +31,7 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/article/list")
-	public String list(@ModelAttribute("sessUser") UserVo sessUser, ArticleVo vo, Model model) {
+	public String list(@ModelAttribute("sessUser") UserVo sessUser, Model model) {
 		// 로그인 체크
 		if(sessUser == null) {
 			return "redirect:/user/login?success=102";

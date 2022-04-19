@@ -43,6 +43,6 @@ public class ArticleVo {
 	// 추가필드
 	@Transient // 테이블의 컬럼을 해당 엔티티에서 제외하는 어노테이션
 	private MultipartFile fname;
-	
+	@Transient
 	private String nick;
 }
