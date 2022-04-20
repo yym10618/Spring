@@ -13,6 +13,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,9 +37,15 @@ public class ArticleVo {
 	private String regip;
 	
 	// 현재시간 입력(JPA)
+	@Getter(value = AccessLevel.NONE) // 해당 필드를 Lombok Getter 생성에서 제외
 	@Column(updatable=false)
 	@CreationTimestamp
 	private Timestamp rdate;
+	
+	// rdate Getter 새로 정의
+	public String getRdate() {
+		return rdate.toString().substring(2, 10);
+	}
 	
 	// 추가필드
 	@Transient // 테이블의 컬럼을 해당 엔티티에서 제외하는 어노테이션

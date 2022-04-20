@@ -47,10 +47,26 @@ public class ArticleService {
 	public ArticleVo selectArticle(int no) {
 		return null;
 	}
-	public List<ArticleVo> selectArticles(){
+	
+	public List<ArticleVo> selectArticles(int start){
+		// JPA
+		List<ArticleVo> articles = repo.selectArticlesAddNick(start);
 		
-		return dao.selectArticles();
+		// MyBatis
+		//List<ArticleVo> articles = dao.selectArticles(start);
+		
+		return articles;
 	}
+	
+	public int selectCountTotal() {
+		// JPA
+		
+		// MyBatis
+		int total = dao.selectCountTotal();
+		
+		return total;
+	}
+	
 	public void updateArticle(ArticleVo vo) {}
 	public void deleteArticle(int no) {}
 	
@@ -84,6 +100,53 @@ public class ArticleService {
 		
 	}
 	
+	// 페이지 작업
+	public int getLastPageNum(int total){
+		
+		int lastPageNum = 0;
+		
+		if(total % 10 == 0) {
+			lastPageNum = total / 10;
+		}else {
+			lastPageNum = total / 10 + 1;
+		}
+		
+		return lastPageNum;
+	}
+	
+	public int getCurrentPage(String pg) {
+		
+		int currentPage = 1;
+		
+		if(pg != null) {
+			currentPage = Integer.parseInt(pg);
+		}
+		
+		return currentPage;
+	}
+	
+	public int getLimitStart(int currentPage) {
+		
+		return (currentPage - 1) * 10;
+	}
+	
+	public int getPageStartNum(int total, int start) {
+		return (total - start);
+	}
+	
+	public int[] getPageGroup(int currentPage, int lastPageNum) {
+		int groupCurrent = (int)Math.ceil(currentPage/10.0);
+		int groupStart = (groupCurrent - 1) * 10 + 1;
+		int groupEnd = groupCurrent * 10;
+		
+		if(groupEnd > lastPageNum) {
+			groupEnd = lastPageNum;
+		}
+		
+		int[] groups = {groupStart, groupEnd};
+		
+		return groups;
+	}
 	
 	
 	

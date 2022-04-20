@@ -22,10 +22,18 @@
 		SELECT a.*, b.`nick` FROM `Board_article` AS a 
 			JOIN `Board_user` AS b
 			ON a.uid = b.uid
-			WHERE a.parent = 0 AND a.type IS NULL
+			WHERE a.parent = 0
 			ORDER BY `no` DESC
-			LIMIT 10;
+			LIMIT #{start}, 10;
 	</select>
+	
+	<select id="selectCountTotal" resultType="int">
+		SELECT COUNT(`no`) FROM `Board_article` WHERE `parent`=0;
+	
+	
+	</select>
+	
+	
 	<update id="updateArticle"></update>
 	<delete id="deleteArticle"></delete>
 

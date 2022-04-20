@@ -31,13 +31,28 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/article/list")
-	public String list(@ModelAttribute("sessUser") UserVo sessUser, Model model) {
+	public String list(@ModelAttribute("sessUser") UserVo sessUser, Model model, String pg) {
 		// 로그인 체크
 		if(sessUser == null) {
 			return "redirect:/user/login?success=102";
 		}
-		List<ArticleVo> lists = service.selectArticles();
-		model.addAttribute("lists", lists);
+		
+		// 페이지 작업
+		int currentPage = service.getCurrentPage(pg);
+		int total = service.selectCountTotal();
+		int lastPageNum = service.getLastPageNum(total);
+		int start = service.getLimitStart(currentPage);
+		int pageStartNum = service.getPageStartNum(total, start);
+		int[] groups = service.getPageGroup(currentPage, lastPageNum);
+		
+		// 리스트 출력
+		List<ArticleVo> articles = service.selectArticles(start);
+		
+		model.addAttribute("articles", articles);
+		model.addAttribute("lastPageNum", lastPageNum);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pageStartNum", pageStartNum);
+		model.addAttribute("groups", groups);
 		return "/article/list";
 	}
 	
@@ -49,6 +64,7 @@ public class ArticleController {
 		}
 		return "/article/write";
 	}
+	
 	@PostMapping("/article/write")
 	public String write(@ModelAttribute("sessUser") UserVo sessUser, ArticleVo vo, HttpServletRequest req) {
 		// 로그인 체크
@@ -79,6 +95,7 @@ public class ArticleController {
 		}
 		return "redirect:/article/list";
 	}
+	
 	@GetMapping("/article/view")
 	public String view(@ModelAttribute("sessUser") UserVo sessUser) {
 		// 로그인 체크
@@ -87,6 +104,7 @@ public class ArticleController {
 		}
 		return "/article/view";
 	}
+	
 	@GetMapping("/article/modify")
 	public String modify(@ModelAttribute("sessUser") UserVo sessUser) {
 		// 로그인 체크
