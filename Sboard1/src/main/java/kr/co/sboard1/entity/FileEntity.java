@@ -1,4 +1,4 @@
-package kr.co.sboard1.vo;
+package kr.co.sboard1.entity;
 
 import java.sql.Timestamp;
 
@@ -12,12 +12,20 @@ import org.hibernate.annotations.CreationTimestamp;
 import lombok.Data;
 
 @Data
-public class FileVo {
+@Entity
+@Table(name="Board_file")
+public class FileEntity {
 
+	@Id
 	private int fid;
 	private int parent;
 	private String oName;
 	private String nName;
 	private int download;
-	private String rdate;
+	
+	
+	// 현재시간 입력(JPA)
+	@Column(updatable=false)
+	@CreationTimestamp
+	private Timestamp rdate;
 }

@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import kr.co.sboard1.entity.ArticleEntity;
 import kr.co.sboard1.vo.ArticleVo;
 
 @Repository
-public interface ArticleRepo extends JpaRepository<ArticleVo, Integer>{
+public interface ArticleRepo extends JpaRepository<ArticleEntity, Integer>{
 	
 	@Query(nativeQuery=true, value= "SELECT a.*, b.nick FROM Board_article AS a \r\n"
 									+ "JOIN Board_user AS b\r\n"

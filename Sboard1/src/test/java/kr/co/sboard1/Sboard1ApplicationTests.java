@@ -42,7 +42,7 @@ class Sboard1ApplicationTests {
 		vo.setRegip("128.0.0.1");
 		
 		// JPA
-		articleRepo.save(vo);
+		//articleRepo.save(vo);
 		
 		
 		// MyBatis

@@ -1,4 +1,4 @@
-package kr.co.sboard1.vo;
+package kr.co.sboard1.entity;
 
 import java.sql.Timestamp;
 
@@ -19,8 +19,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ArticleVo {
+@Entity
+@Table(name = "Board_article")
+public class ArticleEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int no;
 	private int parent;
 	private int comment;
@@ -31,7 +35,12 @@ public class ArticleVo {
 	private int hit;
 	private String uid;
 	private String regip;
-	private String rdate;
+	
+	// 현재시간 입력(JPA)
+	@Getter(value = AccessLevel.NONE) // 해당 필드를 Lombok Getter 생성에서 제외
+	@Column(updatable=false)
+	@CreationTimestamp
+	private Timestamp rdate;
 	
 	// rdate Getter 새로 정의
 	public String getRdate() {
@@ -39,7 +48,8 @@ public class ArticleVo {
 	}
 	
 	// 추가필드
+	@Transient // 테이블의 컬럼을 해당 엔티티에서 제외하는 어노테이션
 	private MultipartFile fname;
+	@Transient
 	private String nick;
-	private FileVo fvo;
 }
