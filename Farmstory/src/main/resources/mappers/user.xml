@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.Farmstory.dao.UserDao">
-
-	<insert id="insertUser"></insert>
-	<select id="selectUser" resultType="kr.co.Farmstory.vo.UserVo"></select>
-	<select id="selectUsers" resultType="kr.co.Farmstory.vo.UserVo"></select>
+	<insert id="insertUser">
+		INSERT INTO `Board_user` SET
+			`uid`=#{uid},
+			`pass`=PASSWORD(#{pass}),
+			`name`=#{name},
+			`nick`=#{nick},
+			`email`=#{email},
+			`hp`=#{hp},
+			`zip`=#{zip},
+			`addr1`=#{addr1},	
+			`addr2`=#{addr2},	
+			`regip`=#{regip},	
+			`rdate`=NOW();
+	</insert>	
+	<select id="selectTerms" resultType="kr.co.Farmstory.vo.TermsVo">
+		SELECT * FROM `Board_terms`;
+	</select>
+	<select id="CountUserUid" resultType="int">
+		SELECT COUNT(`uid`) FROM `Board_user` WHERE `uid`=#{uid};	
+	</select>
+	<select id="CountUserNick" resultType="int">
+		SELECT COUNT(`nick`) FROM `Board_user` WHERE `nick`=#{nick};
+	</select>
+	<select id="CountUserEmail" resultType="int">
+		SELECT COUNT(`email`) FROM `Board_user` WHERE `email`=#{email};
+	</select>
+	<select id="CountUserHp" resultType="int">
+		SELECT COUNT(`hp`) FROM `Board_user` WHERE `hp`=#{hp};
+	</select>
+	<select id="selectUser" resultType="kr.co.Farmstory.vo.UserVo">
+		SELECT * FROM `Board_user` WHERE `uid`=#{uid} AND `pass`=PASSWORD(#{pass});	
+	</select>
+	<select id="selectUsers"></select>
 	<update id="updateUser"></update>
 	<delete id="deleteUser"></delete>
-
 </mapper>
