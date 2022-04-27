@@ -7,11 +7,28 @@
 </head>
 <body>
     <div id="wrapper">
-    	<th:block th:include="_header.html"/>
+    	<th:block th:include="/_header.html"/>
+    	<th:block th:include="/board/inc/__${cate}__.html"/>
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form th:action="@{/article/write}" method="post">
+            	<!-- 
+            		파일(첨부) 업로드 기능구현
+            		 1. application.properties 파일 업로드 설정
+            		 2. pom.xml - commons-io 라이브러리 추가
+            		 3. form 태그 enctype="multipart/form-data" 속성 추가
+            		 4. src/main/resources/static/file 디렉터리 생성
+            	-->
+                <form th:action="@{/board/write}" method="post" enctype="multipart/form-data">
+                	<input type="hidden" name="cate" th:value="${cate}"/>
+                	<input type="hidden" name="type" th:value="${type}"/>
+                	
+                	<!-- 
+                		BoardController 상단에 @SessionAttributes("sessUser") 선언 해야됨
+                		그리고 @ModelAttribute("sessUser") 를 초기화 하는 메서드 정의해야됨 -> BoardController 26 ~ 29라인 확인
+                	-->
+                	<input type="hidden" name="uid" th:value="${sessUser.uid}"/>
+                	
                     <table>
                         <tr>
                             <td>제목</td>
@@ -29,13 +46,17 @@
                         </tr>
                     </table>
                     <div>
-                        <a th:href="@{/article/list}" class="btnCancel">취소</a>
+                        <a th:href="@{/board/list(cate=${cate},type=${type})}" class="btnCancel">취소</a>
                         <input type="submit"  class="btnWrite" value="작성완료">
                     </div>
                 </form>
             </article>
         </section>
-    	<th:block th:include="_footer.html"/>
+        <!-- 내용 끝 -->
+		</article>
+		</section>
+        </div>    
+    	<th:block th:include="/_footer.html"/>
     </div>
 </body>
 </html>

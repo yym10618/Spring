@@ -1,11 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.Farmstory.dao.BoardDao">
+	<insert id="insertArticle" useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO `Board_article` SET 
+			`type`=#{type},
+			`title`=#{title},
+			`content`=#{content},
+			`file`=#{file},
+			`uid`=#{uid},
+			`regip`=#{regip},
+			`rdate`=NOW();			
+	</insert>
+	<insert id="insertFile">
+		INSERT INTO `Board_file` SET
+			`parent`=#{parent},
+			`oName`=#{oName},
+			`nName`=#{nName},
+			`rdate`=NOW();
+	</insert>
+	
+	<select id="selectCountTotal" resultType="int">
+		SELECT COUNT(`no`) FROM `Board_article` WHERE `parent`=0 AND `type`=#{type};
+	</select>
+	
+	<!-- SELECT JOIN 결과를 출력을 위한 형식을 정하는 태그 -->
+	<resultMap type="kr.co.Farmstory.vo.ArticleVo" id="selectArticleResultMap">
+		<id     column="no"      property="no"/>
+		<result column="parent"  property="parent"/>
+		<result column="comment" property="comment"/>
+		<result column="type"    property="type"/>
+		<result column="title"   property="title"/>
+		<result column="content" property="content"/>
+		<result column="file"    property="file"/>
+		<result column="hit"     property="hit"/>
+		<result column="uid"     property="uid"/>
+		<result column="regip"   property="regip"/>
+		<result column="rdate"   property="rdate"/>
+		
+		<association property="fvo" javaType="kr.co.Farmstory.vo.FileVo">
+			<id     column="fid"      property="fid"/>
+			<result column="parent"   property="parent"/>
+			<result column="oName"    property="oName"/>
+			<result column="nName"    property="nName"/>
+			<result column="download" property="download"/>
+			<result column="rdate"    property="rdate"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectArticle"  resultMap="selectArticleResultMap">
+		SELECT * FROM `Board_article` AS a
+		LEFT JOIN `Board_file` AS b
+		ON a.`no` = b.`parent`
+		WHERE `no`=#{no};
+	</select>
+	
+	<select id="selectArticles" resultType="kr.co.Farmstory.vo.ArticleVo">
+		SELECT a.*, b.`nick` FROM `Board_article` AS a
+		JOIN `Board_user` AS b
+		ON a.`uid`=b.`uid`
+		WHERE `parent`=0 AND `type`=#{type}
+		ORDER BY `no` DESC
+		LIMIT #{start}, 10;
+	</select>
+	
+	<select id="selectFile" resultType="kr.co.Farmstory.vo.FileVo">
+		SELECT * FROM `Board_file` WHERE `fid`=#{fid};
+	</select>
+	
+	<update id="updateArticle">
+		UPDATE `Board_article` SET
+			`title` = #{title},
+			`content` = #{content},
+			`rdate` = NOW()
+			WHERE `no` = #{no};
+	</update>
 
-	<insert id="insertArticle"></insert>
-	<select id="selectArticle" resultType="kr.co.Farmstory.vo.ArticleVo"></select>
-	<select id="selectArticles" resultType="kr.co.Farmstory.vo.ArticleVo"></select>
-	<update id="updateArticle"></update>
-	<delete id="deleteArticle"></delete>
 
 </mapper>

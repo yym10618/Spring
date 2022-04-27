@@ -7,32 +7,34 @@
 </head>
 <body>
     <div id="wrapper">
-        <th:block th:include="_header.html"/>
+    	<th:block th:include="/_header.html"/>
+    	<th:block th:include="/board/inc/__${cate}__.html"/>
+    
         <section id="board" class="view">
             <h3>글보기</h3>
             <table>
                 <tr>
                     <td>제목</td>
-                    <td><input type="text" name="title" readonly/></td>
+                    <td><input type="text" name="title" readonly th:value="${article.title}"/></td>
                 </tr>
-                <tr>
+                <tr th:if="${article.file == 1}">
                     <td>첨부파일</td>
                     <td>
-                        <a href="">파일명.txt</a>
-                        <span>1회 다운로드</span>
+                        <a th:href="@{/board/filedownload(fid=${article.fvo.fid})}">[[${article.fvo.oName}]]</a>
+                        <span>[[${article.fvo.download}]]회 다운로드</span>
                     </td>
                 </tr>
                 <tr>
                     <td>내용</td>
                     <td>
-                        <textarea name="content" readonly>내용입니다</textarea>
+                        <textarea name="content" readonly>[[${article.content}]]</textarea>
                     </td>
                 </tr>
             </table>
             <div>
-                <a th:href="@{/article/delete}" class="btnDelete">삭제</a>
-                <a th:href="@{/article/modify}" class="btnModify">수정</a>
-                <a th:href="@{/article/list}" class="btnList">목록</a>
+                <a th:href="@{/board/delete(no=${article.no})}" class="btnDelete">삭제</a>
+                <a th:href="@{/board/modify(no=${article.no},cate=${cate},type=${type})}" class="btnModify">수정</a>
+                <a th:href="@{/board/list(cate=${cate}, type=${type})}" class="btnList">목록</a>
             </div>  
             
             <!-- 댓글리스트 -->
@@ -57,7 +59,7 @@
             <!-- 댓글입력폼 -->
             <section class="commentForm">
                 <h3>댓글쓰기</h3>
-                <form th:action="@{article/comment}" method="post">
+                <form th:action="@{/article/comment}" method="post">
                     <textarea name="content"></textarea>
                     <div>
                         <a href="#" class="btnCancel">취소</a>
@@ -67,7 +69,13 @@
             </section>
 
         </section>
-    	<th:block th:include="_footer.html"/>
+        
+        <!-- 내용 끝 -->
+		</article>
+		</section>
+        </div>
+    
+    	<th:block th:include="/_footer.html"/>
     </div>    
 </body>
 </html>
