@@ -1,6 +1,8 @@
 package kr.co.Farmstory.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.Farmstory.service.BoardService;
@@ -116,27 +120,39 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/modify")
-	public String modify(@ModelAttribute("sessUser") UserVo sessUser, ArticleVo vo, Model model, String cate, String type, int no) {
+	public String modify(@ModelAttribute("sessUser") UserVo sessUser, ArticleVo vo, Model model, int no, String cate, String type ) {
 		// 로그인 여부 확인
 		if(sessUser == null)
 			return "redirect:/user/login?success=102";
 		
 		ArticleVo article = service.selectArticle(no);
-		model.addAttribute(type);
-		model.addAttribute(cate);
 		model.addAttribute("article", article);
+		model.addAttribute("cate", cate);
+		model.addAttribute("type", type);
+		model.addAttribute("no", no);
 		return "/board/modify";
 	}
 	
 	@PostMapping("/board/modify")
-	public String modify(@ModelAttribute("sessUser") UserVo sessUser, ArticleVo vo) {
+	public String modify(@ModelAttribute("sessUser") UserVo sessUser, ArticleVo vo, String cate, String type) {
 		// 로그인 여부 확인
 		if(sessUser == null)
 			return "redirect:/user/login?success=102";
 		
 		service.updateArticle(vo);
 		
-		return "redirect:/board/view?no="+vo.getNo()+"&cate="+vo.getCate()+"&type="+vo.getType();
+		return "redirect:/board/view?no="+vo.getNo()+"&cate="+cate+"&type="+type;
+	}
+	
+	@GetMapping("/board/delete")
+	public String delete(@ModelAttribute("sessUser") UserVo sessUser, int no, String cate, String type) {
+		// 로그인 여부 확인
+		if(sessUser == null)
+			return "redirect:/user/login?success=102";
+		
+		service.deleteArticle(no);
+		
+		return "redirect:/board/list?cate="+cate+"&type="+type;
 	}
 	
 	
@@ -149,6 +165,30 @@ public class BoardController {
 		
 		// 파일 다운로드
 		service.fileDownload(resp, fvo);
+	}
+	// 댓글 입력
+	@ResponseBody
+	@GetMapping("/board/comment/{no}")
+	public List<ArticleVo> comment(@PathVariable("no") int no) {
+		
+		List<ArticleVo> comments = service.selectComment(no);
+		
+		return comments;
+	}
+	
+	@ResponseBody
+	@PostMapping("/board/comment")
+	public Map<String, Integer> comment(ArticleVo vo, HttpServletRequest req) {
+		
+		String regip = req.getRemoteAddr();
+		vo.setRegip(regip);
+		
+		int result = service.insertComment(vo);
+		
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", result);
+		
+		return map;
 	}
 	
 }

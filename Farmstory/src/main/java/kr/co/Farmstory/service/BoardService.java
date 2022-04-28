@@ -30,6 +30,14 @@ public class BoardService {
 	public void insertFile(FileVo vo) {
 		dao.insertFile(vo);
 	}
+	// 댓글 입력
+	public int insertComment(ArticleVo vo) {
+		return dao.insertComment(vo);
+	}
+	
+	public List<ArticleVo> selectComment(int no) {
+		return dao.selectcomments(no);
+	}
 	public ArticleVo selectArticle(int no) {
 		return dao.selectArticle(no);
 	}
@@ -42,6 +50,10 @@ public class BoardService {
 	// 파일 테이블의 파일 조회
 	public FileVo selectFile(int fid) {
 		return dao.selectFile(fid);
+	}
+	
+	public List<ArticleVo> selectLatest(String type) {
+		return dao.selectLatest(type);
 	}
 	public void updateArticle(ArticleVo vo) {
 		dao.updateArticle(vo);
@@ -81,7 +93,7 @@ public class BoardService {
 	}
 	
 	// 파일 다운로드
-public void fileDownload(HttpServletResponse resp, FileVo fvo) {
+	public void fileDownload(HttpServletResponse resp, FileVo fvo) {
 		
 		try {
 			// 파일 다운로드 response 헤더수정	

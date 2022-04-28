@@ -19,6 +19,19 @@
 			`rdate`=NOW();
 	</insert>
 	
+	<insert id="insertComment">
+		INSERT INTO `Board_article` SET
+			`parent` = #{parent},
+			`content` = #{content},
+			`uid` = #{uid},
+			`regip` = #{regip},
+			`rdate` = NOW();
+	</insert>
+	
+	<select id="selectComments" resultType="kr.co.Farmstory.vo.ArticleVo">
+		SELECT * FROM `Board_article` WHERE `parent` = #{no} ORDER BY `no`;
+	</select>
+	
 	<select id="selectCountTotal" resultType="int">
 		SELECT COUNT(`no`) FROM `Board_article` WHERE `parent`=0 AND `type`=#{type};
 	</select>
@@ -29,6 +42,7 @@
 		<result column="parent"  property="parent"/>
 		<result column="comment" property="comment"/>
 		<result column="type"    property="type"/>
+		<result column="cate"    property="cate"/>
 		<result column="title"   property="title"/>
 		<result column="content" property="content"/>
 		<result column="file"    property="file"/>
@@ -67,6 +81,13 @@
 		SELECT * FROM `Board_file` WHERE `fid`=#{fid};
 	</select>
 	
+	<select id="selectLatest" resultType="kr.co.Farmstory.vo.ArticleVo">
+		SELECT * FROM `Board_article` 
+		WHERE `type` = #{type}
+		ORDER BY `no` DESC
+		LIMIT 5;
+	</select>
+	
 	<update id="updateArticle">
 		UPDATE `Board_article` SET
 			`title` = #{title},
@@ -74,6 +95,10 @@
 			`rdate` = NOW()
 			WHERE `no` = #{no};
 	</update>
+	
+	<delete id="deleteArticle">
+		DELETE FROM `Board_article` WHERE `no` = #{no};
+	</delete>
 
 
 </mapper>

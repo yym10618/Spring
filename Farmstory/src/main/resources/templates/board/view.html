@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>글보기</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script th:src="@{/js/comment.js}"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -32,7 +34,7 @@
                 </tr>
             </table>
             <div>
-                <a th:href="@{/board/delete(no=${article.no})}" class="btnDelete">삭제</a>
+                <a th:href="@{/board/delete(no=${article.no},cate=${cate},type=${type})}" class="btnDelete">삭제</a>
                 <a th:href="@{/board/modify(no=${article.no},cate=${cate},type=${type})}" class="btnModify">수정</a>
                 <a th:href="@{/board/list(cate=${cate}, type=${type})}" class="btnList">목록</a>
             </div>  
@@ -59,7 +61,9 @@
             <!-- 댓글입력폼 -->
             <section class="commentForm">
                 <h3>댓글쓰기</h3>
-                <form th:action="@{/article/comment}" method="post">
+                <form th:action="@{/board/comment}" method="post">
+                	<input type="hidden" name="parent" th:value="${article.no}"/>
+                	<input type="hidden" name="uid" th:value="${sessUser.uid}"/>
                     <textarea name="content"></textarea>
                     <div>
                         <a href="#" class="btnCancel">취소</a>
