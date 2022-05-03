@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>케이마켓::관리자</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>    
-    <script th:src="@{/js/gnb.js}"></script>
+    <script th:src="@{/js/admin/gnb.js}"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
@@ -55,7 +54,7 @@
 
                         <tr>
                             <td><input type="checkbox" name="상품코드"/></td>
-                            <td><img th:src="@{/img/admin/sample_thumb.jpg}" class="thumb"></td>
+                            <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
                             <td>201603292</td>
                             <td>FreeMovement BLUEFORCE</td>
                             <td>36,000</td>
@@ -71,7 +70,7 @@
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="상품코드"/></td>
-                            <td><img th:src="@{/img/admin/sample_thumb.jpg}" class="thumb"></td>
+                            <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
                             <td>201603292</td>
                             <td>FreeMovement BLUEFORCE</td>
                             <td>36,000</td>
@@ -87,7 +86,7 @@
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="상품코드"/></td>
-                            <td><img th:src="@{/img/admin/sample_thumb.jpg}" class="thumb"></td>
+                            <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
                             <td>201603292</td>
                             <td>FreeMovement BLUEFORCE</td>
                             <td>36,000</td>
@@ -139,7 +138,11 @@
                 <!-- 상품목록 컨텐츠 끝 -->
             </section>
         </main>
-        <th:block th:include="@{/admin/_footer.html}"/>
+        <footer>
+            <div>
+                <p>Copyright ©kmarket.co.kr All rights reserved. KMARKET ADMINISTRATOR Version 5.4.1.2</p>
+            </div>
+        </footer>
     </div>    
 </body>
 </html>
