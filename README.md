@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Sboard1 게시판 : 54.180.134.197:8080/Sboard1/
 ## Farmstory 게시판 : 54.180.134.197:8080/Farmstory/
 
@@ -66,3 +67,6 @@
 > - SQL > Spring Data JPA 선택
 > - Template Engines > Thymeleaf 선택
 > - Web > Spring Web 선택
+=======
+
+>>>>>>> 323a9cfbd5ca576143e43e1c5c46604838ad31e2
