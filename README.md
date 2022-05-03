@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Sboard1 게시판 : 54.180.134.197:8080/Sboard1/
 ## Farmstory 게시판 : 54.180.134.197:8080/Farmstory/
 
