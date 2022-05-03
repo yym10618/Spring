@@ -67,5 +67,3 @@
 > - Template Engines > Thymeleaf 선택
 > - Web > Spring Web 선택
 =======
-
->>>>>>> 323a9cfbd5ca576143e43e1c5c46604838ad31e2
