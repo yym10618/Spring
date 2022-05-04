@@ -1,5 +1,6 @@
 package kr.co.kmarket.admin.controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,6 +60,5 @@ public class AdminProductController {
 		
 		return service.selectCate2(cate1);
 	}
-	
 	
 }
