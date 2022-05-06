@@ -41,9 +41,9 @@ public class ProductVo {
 	private String rdate;
 	private int etc1;
 	private int etc2;
-	private int etc3;
-	private int etc4;
-	private int etc5;
+	private String etc3;
+	private String etc4;
+	private String etc5;
 	
 	// 추가필드
 	private MultipartFile img1;
