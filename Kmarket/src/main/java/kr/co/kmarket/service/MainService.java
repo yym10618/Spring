@@ -17,11 +17,9 @@ public class MainService {
 	
 	public List<CategoriesVo> selectCategories(){
 		return dao.selectCategories();
-		
-		
 	}
 	
-	public List<ProductVo> selectHit(){
-		return dao.selectHit();
+	public List<ProductVo> selectMainProducts(String order){
+		return dao.selectMainProducts(order);
 	}
 }

@@ -11,7 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductVo {
-
 	private int pid;
 	private int cate1;
 	private int cate2;
@@ -41,11 +40,15 @@ public class ProductVo {
 	private String rdate;
 	private int etc1;
 	private int etc2;
-	private int etc3;
-	private int etc4;
-	private int etc5;
+	private String etc3;
+	private String etc4;
+	private String etc5;
 	
-	// 추가필드
+	//추가필드
+	private int salePrice;
+	private int order;
+	private int start;
+	
 	private MultipartFile img1;
 	private MultipartFile img2;
 	private MultipartFile img3;
@@ -53,7 +56,7 @@ public class ProductVo {
 	
 	public List<MultipartFile> getThumbnails() {
 		return Arrays.asList(img1, img2, img3, imgDetail);
-		
 	}
+	
 	
 }
