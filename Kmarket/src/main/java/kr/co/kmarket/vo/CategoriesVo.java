@@ -15,4 +15,5 @@ public class CategoriesVo {
 	private String tit2;
 	
 	private List<Cate2Vo> cate2List;
+	
 }

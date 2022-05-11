@@ -3,9 +3,12 @@ package kr.co.kmarket.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import kr.co.kmarket.dao.ProductDao;
+import kr.co.kmarket.vo.CartVo;
 import kr.co.kmarket.vo.CategoriesVo;
 import kr.co.kmarket.vo.ProductVo;
 
@@ -20,10 +23,22 @@ public class ProductService {
 	}
 	
 	public List<ProductVo> selectProducts(ProductVo vo){
-		return dao.selectProducts(vo);
+		return dao.selectProducts(vo); 
 	}
+	
+//	public Page<ProductVo> selectProducts(Pageable pageable){
+//		return repo.findAll(pageable);
+//	}
 	
 	public CategoriesVo selectCateTitles(ProductVo vo) {
 		return dao.selectCateTitles(vo);
+	}
+	
+	public int insertCart(CartVo vo) {
+		return dao.insertCart(vo);
+	}
+	
+	public List<CartVo> selectCarts(String uid){
+		return dao.selectCarts(uid);
 	}
 }

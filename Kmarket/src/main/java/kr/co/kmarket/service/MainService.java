@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.kmarket.admin.vo.ProductVo;
 import kr.co.kmarket.dao.MainDao;
 import kr.co.kmarket.vo.CategoriesVo;
+import kr.co.kmarket.vo.ProductVo;
 
 @Service
 public class MainService {
-
+	
 	@Autowired
 	private MainDao dao;
 	
@@ -22,4 +22,6 @@ public class MainService {
 	public List<ProductVo> selectMainProducts(String order){
 		return dao.selectMainProducts(order);
 	}
+	
+	
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import kr.co.kmarket.admin.vo.ProductVo;
 import kr.co.kmarket.vo.CategoriesVo;
+import kr.co.kmarket.vo.ProductVo;
 
 @Mapper
 @Repository
