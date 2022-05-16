@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link rel="stylesheet" th:href="@{/css/common.css}"/>
     <link rel="stylesheet" th:href="@{/css/product/product.css}"/>
+    <script th:src="@{/js/product/cart.js}"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -38,7 +39,7 @@
                 <table>
                   <thead>
                     <tr>
-                      <th><input type="checkbox" name="all"></th>
+                      <th><input type="checkbox" name="all" checked></th>
                       <th>상품명</th>
                       <th>총수량</th>
                       <th>판매가</th>
@@ -54,7 +55,12 @@
                     </tr>
                     
                     <tr th:each="product:${carts}">
-                      <td><input type="checkbox" name=""></td>
+                      <td><input type="checkbox" 
+                      			 name="productChk" 
+                      			 th:value="${product.cid}" 
+                      			 th:data-pid="${product.pid}" 
+                      			 th:data-count="${product.count}" 
+                      			 checked></td>
                       <td>
                         <article>
                           <a href="#">
@@ -65,13 +71,13 @@
                           </div>
                         </article>
                       </td>
-                      <td>[[${product.count}]]</td>
-                      <td>[[${#numbers.formatInteger(product.price, 3, 'COMMA')}]]</td>
-                      <td>[[${product.discount}]]%</td>
-                      <td>[[${product.point}]]</td>
-                      <td th:if="${product.delivery == 0}">무료배송</td>
-                      <td th:if="${product.delivery != 0}">[[${#numbers.formatInteger(product.delivery, 3, 'COMMA')}]]</td>
-                      <td>[[${#numbers.formatInteger(product.total, 3, 'COMMA')}]]</td>
+                      <td class="count">[[${product.count}]]</td>
+                      <td class="price">[[${#numbers.formatInteger(product.price, 3, 'COMMA')}]]</td>
+                      <td class="discount">[[${product.discount}]]%</td>
+                      <td class="point">[[${product.point}]]</td>
+                      <td class="delivery" th:if="${product.delivery == 0}">무료배송</td>
+                      <td class="delivery" th:if="${product.delivery != 0}">[[${#numbers.formatInteger(product.delivery, 3, 'COMMA')}]]</td>
+                      <td class="total">[[${#numbers.formatInteger(product.total, 3, 'COMMA')}]]</td>
                     </tr>
                   </tbody>
                 </table>
@@ -79,34 +85,35 @@
 
                 <!-- 장바구니 전체합계 -->
                 <div class="total">
+                <input type="hidden" name="uid" th:value="${sessMember.uid}"/>
                   <h2>전체합계</h2>
                   <table border="0">
                     <tr>
                       <td>상품수</td>
-                      <td>1</td>
+                      <td class="count">0</td>
                     </tr>
                     <tr>
                       <td>상품금액</td>
-                      <td>27,000</td>
+                      <td class="price">0</td>
                     </tr>
                     <tr>
                       <td>할인금액</td>
-                      <td>-1,000</td>
+                      <td class="discount">0</td>
                     </tr>
                     <tr>
                       <td>배송비</td>
-                      <td>0</td>
+                      <td class="delivery">0</td>
                     </tr>              
                     <tr>
                       <td>포인트</td>
-                      <td>260</td>
+                      <td class="point">0</td>
                     </tr>
                     <tr>
                       <td>전체주문금액</td>
-                      <td>26,000</td>
+                      <td class="total">0</td>
                     </tr>
                   </table>
-                  <input type="submit" name="" value="주문하기">    
+                  <input type="submit" name="order" value="주문하기">    
                 </div>
 
               </form>

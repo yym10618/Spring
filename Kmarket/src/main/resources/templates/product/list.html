@@ -54,9 +54,9 @@
                   </td>
                   <td>
                     <ul>
-                      <li><ins class="dis-price">[[${product.salePrice}]]</ins></li>
+                      <li><ins class="dis-price">[[${#numbers.formatInteger(product.salePrice, 3, 'COMMA')}]]</ins></li>
                       <li>
-                        <del class="org-price">[[${product.price}]]</del>
+                        <del class="org-price">[[${#numbers.formatInteger(product.price, 3, 'COMMA')}]]</del>
                         <span class="discount">[[${product.discount}]]%</span>
                       </li>
                       <li>
