@@ -56,6 +56,14 @@ public class ProductService {
 		dao.insertOrderDetail(oid, pid, count);
 	}
 	
+	public List<OrderVo> selectOrders(int oid){
+		return dao.selectOrders(oid);
+	}
+	
+	public int updateOrder(OrderVo vo) {
+		return dao.updateOrder(vo);
+	}
+	
 	
 	// 페이지 작업
 	public int getLastPageNum(int total){
