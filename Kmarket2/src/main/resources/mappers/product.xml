@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.kmarket.dao.ProductDao">
+	
+
+	<select id="selectProduct" resultType="kr.co.kmarket.vo.ProductVo">
+		SELECT *, FLOOR(`price` * (1 - `discount`/100)) AS `salePrice` FROM `km_product` 
+		WHERE `pid`=#{pid};
+	</select>
+	
+	
+	<select id="selectProducts" resultType="kr.co.kmarket.vo.ProductVo">
+		SELECT *, FLOOR(`price` * (1 - `discount`/100)) AS `salePrice` FROM `km_product` 
+		WHERE `cate1`=#{cate1} AND `cate2`=#{cate2}
+		<if test="order == 1">ORDER BY `sold` DESC</if>
+		<if test="order == 2">ORDER BY `salePrice` ASC</if>
+		<if test="order == 3">ORDER BY `salePrice` DESC</if>
+		<if test="order == 4">ORDER BY `score` DESC</if>
+		<if test="order == 5">ORDER BY `review` DESC</if>
+		<if test="order == 6">ORDER BY `rdate` DESC</if>
+		LIMIT #{start}, 10;
+	</select>
+	
+	<select id="selectCountTotal" resultType="int">
+		SELECT COUNT(`pid`) FROM `km_product` WHERE `cate1`=#{cate1} AND `cate2`=#{cate2};
+	</select>
+	
+	<select id="selectCateTitles" resultType="kr.co.kmarket.vo.CategoriesVo">
+		SELECT c2.cate1, c2.cate2, c1.title AS tit1, c2.title AS tit2 
+		FROM `km_product_cate1` AS c1
+		JOIN `km_product_cate2` AS c2
+		ON c1.cate1 = c2.cate1
+		WHERE c2.cate1=#{cate1} AND c2.cate2=#{cate2};
+	</select>
+
+	<!-- 장바구니 -->
+	<insert id="insertCart">
+		INSERT INTO `km_product_cart` SET
+		`uid`=#{uid},
+		`pid`=#{pid},
+		`count`=#{count},
+		`price`=#{price},
+		`discount`=#{discount},
+		`point`=#{point},
+		`delivery`=#{delivery},
+		`total`=#{total},
+		`rdate`=NOW();
+	</insert>
+	
+	<select id="selectCarts" resultType="kr.co.kmarket.vo.CartVo">
+		SELECT a.*, b.cate1, b.cate2, b.name, b.desc, b.thumb1
+		FROM `km_product_cart` AS a
+		JOIN `km_product` AS b
+		ON a.pid = b.pid
+		WHERE `uid`=#{uid};
+	</select>
+	
+	<delete id="deleteCart">
+		DELETE FROM `km_product_cart` WHERE `cid` IN
+		<foreach collection="array" item="cid" open="(" close=")" separator=",">
+			#{cid}
+		</foreach>
+	</delete>
+	
+	<!-- 주문 -->
+	<insert id="insertOrder" useGeneratedKeys="true" keyProperty="oid">
+		INSERT INTO `km_product_order` SET
+			`uid` = #{uid},
+			`count` = #{count},
+			`price` = #{price},
+			`discount` = #{discount},
+			`delivery` = #{delivery},
+			`point` = #{point},
+			`total` = #{total},
+			`rdate` = NOW();
+	</insert>
+	
+	<insert id="insertOrderDetail">
+		INSERT INTO `km_product_order_detail` SET
+			`oid` = #{oid},
+			`pid` = #{pid},
+			`cnt` = #{count};
+	</insert>
+	
+	<select id="selectOrders" resultType="kr.co.kmarket.vo.OrderVo">
+		SELECT  a.*,
+			    b.pid,
+			    b.cnt,
+			    c.cate1 AS pCate1,
+			    c.cate2 AS pCate2,
+			    c.name AS pName,
+			    c.desc AS pDesc, 
+			    c.thumb1 AS pThumb1,
+			    c.price AS pPrice,
+			    c.discount AS pDiscount,
+			    c.point AS pPoint,
+			    c.delivery AS pDelivery,
+			    FLOOR(c.`price` * (1 - c.`discount`/100)) AS `pSalePrice`,
+			    d.name AS uName,
+			    d.hp AS uHp,
+			    d.zip AS uZip,
+			    d.addr1 AS uAddr1,
+			    d.addr2 AS uAddr2,
+			    d.point AS uPoint
+		FROM `km_product_order` AS a
+		JOIN `km_product_order_detail` AS b
+		ON a.oid = b.oid
+		JOIN `km_product` AS c
+		ON b.pid = c.pid
+		JOIN `km_member` AS d
+		ON a.uid = d.uid
+		WHERE a.oid = #{oid};
+	</select>
+	
+	<update id="updateOrder">
+		UPDATE `km_product_order` SET
+			`orderer` = #{orderer},
+			`hp` = #{hp},
+			`zip` = #{zip},
+			`addr1` = #{addr1},
+			`addr2` = #{addr2},
+			`payment` = #{payment},
+			`complete` = #{complete},
+			`completeDate` = NOW()
+		WHERE
+			`oid` = #{oid};
+	</update>
+	
+	
+	
+
+
+
+</mapper>
