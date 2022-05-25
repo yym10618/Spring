@@ -1180,3 +1180,69 @@ org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property o
 2022-05-25 16:47:21.351  INFO 7628 --- [RMI TCP Connection(11)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-05-25 16:47:21.353  INFO 7628 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-05-25 16:47:21.358  INFO 7628 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-05-25 16:56:54.998  INFO 3356 --- [restartedMain] kr.co.kmarket.KmarketApplication         : Starting KmarketApplication using Java 17.0.2 on DESKTOP-TUDTNA9 with PID 3356 (C:\Users\bigdata\Desktop\Workspace\Spring\Kmarket\target\classes started by bigdata in C:\Users\bigdata\Desktop\Workspace\Spring\Kmarket)
+2022-05-25 16:56:54.999  INFO 3356 --- [restartedMain] kr.co.kmarket.KmarketApplication         : No active profile set, falling back to 1 default profile: "default"
+2022-05-25 16:56:55.032  INFO 3356 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-25 16:56:55.033  INFO 3356 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-25 16:56:55.449  INFO 3356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-25 16:56:55.462  INFO 3356 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2022-05-25 16:56:55.860  INFO 3356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-05-25 16:56:55.867  INFO 3356 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-25 16:56:55.868  INFO 3356 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-25 16:56:55.931  INFO 3356 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-25 16:56:55.931  INFO 3356 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 898 ms
+2022-05-25 16:56:56.084  INFO 3356 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-05-25 16:56:56.120  INFO 3356 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.8.Final
+2022-05-25 16:56:56.234  INFO 3356 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-05-25 16:56:56.302  INFO 3356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-25 16:56:56.306  WARN 3356 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2022-05-25 16:56:56.533  INFO 3356 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-25 16:56:56.546  INFO 3356 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-05-25 16:56:57.197  INFO 3356 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-05-25 16:56:57.204  INFO 3356 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-05-25 16:56:57.394  INFO 3356 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public kr.co.kmarket.vo.MemberVo kr.co.kmarket.controller.ProductController.setMemberVo()
+2022-05-25 16:56:57.425  WARN 3356 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-25 16:56:57.556  INFO 3356 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-05-25 16:56:57.694  INFO 3356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-05-25 16:56:57.721  INFO 3356 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-05-25 16:56:57.728  INFO 3356 --- [restartedMain] kr.co.kmarket.KmarketApplication         : Started KmarketApplication in 3.007 seconds (JVM running for 3.523)
+2022-05-25 16:57:01.723  INFO 3356 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-25 16:57:01.724  INFO 3356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-25 16:57:01.725  INFO 3356 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-05-25 16:57:18.627  INFO 3356 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-05-25 16:57:18.638  INFO 3356 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-05-25 16:57:18.641  INFO 3356 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-05-25 16:57:18.645  INFO 3356 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-05-25 17:34:28.410  INFO 10060 --- [restartedMain] kr.co.kmarket.KmarketApplication         : Starting KmarketApplication using Java 17.0.2 on DESKTOP-TUDTNA9 with PID 10060 (C:\Users\bigdata\Desktop\Workspace\Spring\Kmarket\target\classes started by bigdata in C:\Users\bigdata\Desktop\Workspace\Spring\Kmarket)
+2022-05-25 17:34:28.411  INFO 10060 --- [restartedMain] kr.co.kmarket.KmarketApplication         : No active profile set, falling back to 1 default profile: "default"
+2022-05-25 17:34:28.443  INFO 10060 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-05-25 17:34:28.443  INFO 10060 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-05-25 17:34:28.829  INFO 10060 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-05-25 17:34:28.841  INFO 10060 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2022-05-25 17:34:29.269  INFO 10060 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-05-25 17:34:29.276  INFO 10060 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-25 17:34:29.277  INFO 10060 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-05-25 17:34:29.324  INFO 10060 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-25 17:34:29.324  INFO 10060 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 881 ms
+2022-05-25 17:34:29.446  INFO 10060 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-05-25 17:34:29.478  INFO 10060 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.8.Final
+2022-05-25 17:34:29.586  INFO 10060 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-05-25 17:34:29.654  INFO 10060 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-25 17:34:29.658  WARN 10060 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2022-05-25 17:34:29.874  INFO 10060 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-25 17:34:29.884  INFO 10060 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-05-25 17:34:30.530  INFO 10060 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-05-25 17:34:30.543  INFO 10060 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-05-25 17:34:30.993  INFO 10060 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public kr.co.kmarket.vo.MemberVo kr.co.kmarket.controller.ProductController.setMemberVo()
+2022-05-25 17:34:31.039  WARN 10060 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-25 17:34:31.192  INFO 10060 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-05-25 17:34:31.372  INFO 10060 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-05-25 17:34:31.400  INFO 10060 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-05-25 17:34:31.409  INFO 10060 --- [restartedMain] kr.co.kmarket.KmarketApplication         : Started KmarketApplication in 3.239 seconds (JVM running for 3.774)
+2022-05-25 17:34:33.372  INFO 10060 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-25 17:34:33.372  INFO 10060 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-25 17:34:33.373  INFO 10060 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-05-25 18:21:24.762  INFO 10060 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-05-25 18:21:24.774  INFO 10060 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-05-25 18:21:24.777  INFO 10060 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-05-25 18:21:24.778  INFO 10060 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

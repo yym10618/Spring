@@ -18,7 +18,7 @@ let isAddr1Ok    = false;
 let isAddr2Ok    = false;
  
  $(function(){
-    	
+	/*
 	$('input[name=uid]').keyup(function(){
 		
 		let value = $(this).val();
@@ -139,31 +139,40 @@ let isAddr2Ok    = false;
 		});
 	});
 	
-	$('input[name=zip]').keyup(function(){
+	*/
+	//주소 
+	$('input[name=addr2]').focusout(function(){
 		
-		let value = $(this).val();
-		if(value){
-			isZipOk = true;
-		}else{
-			isZipOk = false;
-		}
-		
-	});
-	$('input[name=addr2]').keyup(function(){
-		
+		let value = $(":input[name=addr1][readonly='readonly']").val();
 		let addr2 = $('input[name=addr2]').val();
-		if(!addr2){
-			isAddr2Ok = false;
-		}else{
-			isAddr2Ok = true;
+		
+		
+		console.log(value)
+		
+		if(!value){
+			alert('주소 검색을 하세요.')
+			$('input[name=zip]').click()
 		}
+		
+		
+		console.log(addr2)
+		
+		if(!addr2){
+			alert('상세 주소를 입력하세요.')
+			isAddr2Ok = false;
+		}
+	
+	
 	});
+	
+	
+	
 });
 	
 $(function(){
 	$('#member-register > form').submit(function(){
 		// form 전송할때 실행되는 이벤트
-		
+		/*
 		if(!isUidOk){
 			alert('아이디를 확인하세요.');
 			return false;
@@ -184,8 +193,8 @@ $(function(){
 			alert('휴대폰번호를 확인하세요.');
 			return false;
 		}
+		*/
 		
-		/*
 		if(!isZipOk){
 			alert('주소를 확인하세요.');
 			return false;
@@ -193,7 +202,7 @@ $(function(){
 		if(!isAddr2Ok){
 			alert('상세주소를 확인하세요.');
 			return false;
-		}*/
+		}
 		return true; // 최종 폼 전송
 	});
 	
