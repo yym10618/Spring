@@ -17,6 +17,9 @@ let isTelOk    = false;
 let isFaxOk    = false;
 let isEmailOk    = false;
 let isManagerHpOk    = false;
+let isZipOk    = false;
+let isAddr1Ok    = false;
+let isAddr2Ok    = false;
  
  $(function(){
     		
@@ -97,6 +100,19 @@ let isManagerHpOk    = false;
 				
 			}
 		});
+	});
+	
+	$('input[name=ceo]').keyup(function(){
+		let ceo = $('input[name=ceo]').val();
+		
+		if(reName.test(ceo)){
+			$('.msgCeo').css('color', 'green').text('사용 가능한 이름입니다.');
+			isNameOk = true;
+		}else{
+			$('.msgCeo').css('color', 'red').text('이름을 한글로 2자이상 입력하세요');
+			isNameOk = false;
+			
+		}
 	});
 	
 	$('input[name=bizRegNum]').keyup(function(){
@@ -249,6 +265,32 @@ let isManagerHpOk    = false;
 		});
 	});
 	
+	//주소 
+	$('input[name=addr2]').focusout(function(){
+		
+		let value = $(":input[name=addr1][readonly='readonly']").val();
+		let addr2 = $('input[name=addr2]').val();
+		
+		
+		console.log(value)
+		
+		if(!value){
+			alert('주소 검색을 하세요.')
+			$('input[name=zip]').click()
+		}
+		
+		
+		console.log(addr2)
+		
+		if(!addr2){
+			alert('상세 주소를 입력하세요.')
+			isAddr2Ok = false;
+		}else{
+			isAddr2Ok=true;
+		}
+	
+	});
+	
 	
 	
 });
@@ -297,6 +339,11 @@ $(function(){
 		
 		if(!isManagerHpOk){
 			alert('담당자 휴대폰번호를 다시 확인하세요.');
+			return false;
+		}
+		
+		if(!isAddr2Ok){
+			alert('상세주소를 확인하세요.');
 			return false;
 		}
 		

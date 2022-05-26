@@ -160,6 +160,8 @@ let isAddr2Ok    = false;
 		if(!addr2){
 			alert('상세 주소를 입력하세요.')
 			isAddr2Ok = false;
+		}else{
+			isAddr2Ok = true;
 		}
 	
 	
@@ -194,11 +196,6 @@ $(function(){
 			return false;
 		}
 		*/
-		
-		if(!isZipOk){
-			alert('주소를 확인하세요.');
-			return false;
-		}
 		if(!isAddr2Ok){
 			alert('상세주소를 확인하세요.');
 			return false;
