@@ -1,8 +1,8 @@
-### [Sboard1 게시판 링크](54.180.134.197:8080/Sboard1/)
+### [Sboard1 게시판 링크](https://54.180.134.197:8080/Sboard1/)
 
-### [Farmstory 게시판 링크](54.180.134.197:8080/Farmstory/)
+### [Farmstory 게시판 링크](https://54.180.134.197:8080/Farmstory/)
 
-### [Kmarket 쇼핑몰 링크](54.180.134.197:8080/)
+### [Kmarket 쇼핑몰 링크](https://54.180.134.197:8080/)
 
 # Spring
 
@@ -78,4 +78,4 @@
 > - SQL > MyBatis Framework 선택
 > - SQL > Spring Data JPA 선택
 > - Template Engines > Thymeleaf 선택
-> - # Web > Spring Web 선택
+> - Web > Spring Web 선택
