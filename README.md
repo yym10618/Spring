@@ -1,25 +1,34 @@
-## Sboard1 게시판 : 54.180.134.197:8080/Sboard1/
-## Farmstory 게시판 : 54.180.134.197:8080/Farmstory/
+## [Sboard1 게시판 링크](54.180.134.197:8080/Sboard1/)
+
+## [Farmstory 게시판 링크](54.180.134.197:8080/Farmstory/)
+
+## [Kmarket 쇼핑몰 링크](54.180.134.197:8080/)
 
 # Spring
+
 ※ 스프링5가 아닌 스프링부트2.6.x을 기준으로 실습진행
 
 ## Ch01.스프링 소개 및 설치
+
 > - STS4 기본 인코딩 설정 > STS4 인코딩 설정.txt 참고
 > - 프로젝트 생성 > Developer > Spring Boot DevTools 선택
 
 ## Ch02.스프링 Ioc/DI
+
 > - Developer > Spring Boot DevTools 선택
 
 ## Ch03.스프링 AOP
+
 > - Developer > Spring Boot DevTools 선택
 > - pom.xml > 'spring-boot-starter-aop' dependency 추가
 
 ## Ch04.스프링 MVC
+
 > - Developer > Spring Boot DevTools 선택
 > - Web > Spring Web 선택
 
 ## Ch05.스프링 Tymeleaf
+
 > - Developer > Spring Boot DevTools 선택
 > - Template Engines > Thymeleaf 선택
 > - Web > Spring Web 선택
@@ -28,6 +37,7 @@
 > - Lombok 설치/설정 하기
 
 ## Ch06.스프링 Mybatis
+
 > - Developer > Spring Boot DevTools 선택
 > - Developer > lombok 선택
 > - Template Engines > Thymeleaf 선택
@@ -40,6 +50,7 @@
 > - application.properties MyBatis 정보 설정
 
 ## Ch07.스프링 JPA
+
 > - Developer > Spring Boot DevTools 선택
 > - Developer > lombok 선택
 > - SQL > MySQL Driver 선택
@@ -49,6 +60,7 @@
 > - pom.xml > jpa 라이브러리 추가
 
 ## Ch08.스프링 Security
+
 > - Developer > Spring Boot DevTools 선택
 > - Developer > lombok 선택
 > - SQL > Spring Data JPA 선택
@@ -59,11 +71,11 @@
 > - pom.xml > 스프링 Security 관련 라이브러리 추가
 
 ## Ch09.스프링 REST 웹서비스
+
 > - Developer > Spring Boot DevTools 선택
 > - Developer > lombok 선택
 > - SQL > MySQL Driver 선택
 > - SQL > MyBatis Framework 선택
 > - SQL > Spring Data JPA 선택
 > - Template Engines > Thymeleaf 선택
-> - Web > Spring Web 선택
-=======
+> - # Web > Spring Web 선택
