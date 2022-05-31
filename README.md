@@ -2,7 +2,7 @@
 
 ### [Farmstory 게시판 링크](http://54.180.134.197:8080/Farmstory/)
 
-### [Kmarket 쇼핑몰 링크](http://54.180.134.197:8080/)
+### [Kmarket 쇼핑몰 링크](http://54.180.134.197:8080/Kmarket/)
 
 # Spring
 
